@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Канцтовары А4 — школа, творчество, офис в Жлобине</title>
+  <meta name="description" content="Канцтовары А4 в Жлобине, 18-й микрорайон, д. 24. Всё для школы, творчества и офиса. Работаем ежедневно 08:00–20:00." />
+  <meta property="og:title" content="Канцтовары А4 — Жлобин" />
+  <meta property="og:description" content="Всё для школы, творчества и офиса в 2 минутах от школы. Работаем без выходных." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ CSS-переменные ============ */
+    :root {
+      --paper: #FAF9F6;
+      --paper-soft: #F0EFEA;
+      --ink: #1E3A8A;
+      --highlight: #FACC15;
+      --coral: #F43F5E;
+      --graphite: #1F2937;
+      --green: #16A34A;
+      --red: #DC2626;
+      --line: rgba(30, 58, 138, 0.08);
+      --radius: 14px;
+      --shadow-sm: 0 1px 2px rgba(31, 41, 55, 0.06), 0 2px 6px rgba(31, 41, 55, 0.05);
+      --shadow-md: 0 4px 12px rgba(31, 41, 55, 0.08), 0 12px 24px rgba(31, 41, 55, 0.06);
+      --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-hand: 'Caveat', cursive;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--graphite);
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+    /* ============ Кнопки ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space: nowrap;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--highlight); color: var(--graphite); box-shadow: 0 4px 0 #d9a900; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #d9a900; }
+    .btn-ink { background: var(--ink); color: #fff; }
+    .btn-ink:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-ghost { background: #fff; color: var(--graphite); border: 1.5px solid #e5e3da; }
+    .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+    /* ============ Header ============ */
+    .header {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      background: rgba(250, 249, 246, 0.92);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid #ecebe4;
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; height: 72px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -.02em; }
+    .logo svg { flex-shrink: 0; }
+    .logo small { display: block; font-size: 11px; font-weight: 500; color: #6b7280; letter-spacing: 0; }
+
+    .nav { display: flex; gap: 4px; }
+    .nav a {
+      padding: 9px 14px; border-radius: 999px; font-size: 14px; font-weight: 500;
+      color: #4b5563; transition: background .15s, color .15s;
+    }
+    .nav a:hover { background: var(--paper-soft); color: var(--ink); }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 999px;
+      background: #fff; border: 1px solid #e7e5dc;
+    }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .status-badge.is-open { color: var(--green); }
+    .status-badge.is-open .status-dot { background: var(--green); box-shadow: 0 0 0 3px rgba(22,163,74,.18); }
+    .status-badge.is-closed { color: var(--red); }
+    .status-badge.is-closed .status-dot { background: var(--red); box-shadow: 0 0 0 3px rgba(220,38,38,.15); }
+
+    .burger { display: none; padding: 8px; border-radius: 10px; }
+    .burger span { display: block; width: 22px; height: 2px; background: var(--graphite); border-radius: 2px; margin: 4px 0; transition: .2s; }
+
+    /* ============ Hero ============ */
+    .hero { padding: 108px 0 60px; position: relative; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--ink);
+      background: #EEF2FF; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -.03em;
+      font-weight: 800; margin-bottom: 18px;
+    }
+    .hero h1 .marker {
+      background: linear-gradient(transparent 55%, var(--highlight) 55%, var(--highlight) 92%, transparent 92%);
+      padding: 0 4px;
+    }
+    .hero p.lead { font-size: 17px; color: #4b5563; max-width: 520px; margin-bottom: 28px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: #6b7280; font-weight: 500; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+    .hero-visual { position: relative; }
+    .hero-photo {
+      border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md);
+      aspect-ratio: 4 / 5; background: var(--paper-soft);
+      border: 6px solid #fff; transform: rotate(1.5deg);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .sticker {
+      position: absolute; background: #fff; border-radius: 12px; padding: 10px 14px;
+      font-size: 13px; font-weight: 700; box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sticker-rating { top: 14px; left: -18px; transform: rotate(-4deg); background: var(--highlight); }
+    .sticker-hours { bottom: 26px; right: -14px; transform: rotate(3deg); background: #fff; color: var(--ink); }
+    .sticker-hand {
+      font-family: var(--font-hand); font-size: 22px; color: var(--coral);
+      position: absolute; bottom: -6px; left: 12px; transform: rotate(-3deg);
+    }
+
+    /* ============ Общие секции ============ */
+    section { padding: 70px 0; position: relative; }
+    .section-head { margin-bottom: 38px; max-width: 680px; }
+    .section-tag { font-size: 13px; font-weight: 700; color: var(--coral); text-transform: uppercase; letter-spacing: .08em; }
+    .section-head h2 { font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -.02em; line-height: 1.15; margin: 10px 0 12px; }
+    .section-head p { color: #6b7280; font-size: 16px; }
+
+    /* ============ Каталог ============ */
+    .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+    .tab {
+      padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600;
+      background: #fff; color: #4b5563; border: 1.5px solid #e7e5dc;
+      transition: .18s;
+    }
+    .tab:hover { border-color: var(--ink); color: var(--ink); }
+    .tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .product-card {
+      background: #fff; border-radius: var(--radius); border: 1px solid #ecebe4;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+      animation: fadeIn .3s ease both;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .product-img { aspect-ratio: 4/3; background: var(--paper-soft); overflow: hidden; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .product-badge {
+      align-self: flex-start; font-size: 11px; font-weight: 700; padding: 3px 10px;
+      border-radius: 999px; background: #DCFCE7; color: #15803D;
+    }
+    .product-body h3 { font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .product-brand { font-size: 12px; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+    .product-body .btn { margin-top: auto; font-size: 13px; padding: 10px 14px; }
+    .product-price { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 40px; color: #9ca3af; }
+
+    /* ============ Чек-лист ============ */
+    .checklist-wrap {
+      background: #fff; border-radius: 22px; border: 1px solid #ecebe4;
+      box-shadow: var(--shadow-sm); overflow: hidden;
+      display: grid; grid-template-columns: 300px 1fr;
+    }
+    .checklist-side {
+      background: linear-gradient(160deg, #1E3A8A, #1e40af); color: #fff; padding: 34px 28px;
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .checklist-side h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.01em; }
+    .checklist-side p { font-size: 14px; opacity: .85; }
+    .class-options { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+    .class-option {
+      text-align: left; padding: 14px 16px; border-radius: 12px; font-size: 14px; font-weight: 600;
+      background: rgba(255,255,255,.1); color: #fff; border: 1.5px solid rgba(255,255,255,.2);
+      transition: .18s; line-height: 1.3;
+    }
+    .class-option:hover { background: rgba(255,255,255,.18); }
+    .class-option.active { background: var(--highlight); color: var(--graphite); border-color: var(--highlight); }
+    .class-option small { display: block; font-weight: 400; font-size: 12px; opacity: .7; margin-top: 2px; }
+    .class-option.active small { opacity: .85; }
+
+    .checklist-main { padding: 30px; }
+    .checklist-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+    .checklist-top h4 { font-size: 18px; }
+    .progress-text { font-size: 13px; color: #6b7280; font-weight: 600; }
+    .progress-bar { height: 8px; background: var(--paper-soft); border-radius: 999px; overflow: hidden; margin-bottom: 22px; }
+    .progress-fill { height: 100%; background: var(--green); border-radius: 999px; transition: width .3s ease; width: 0%; }
+
+    .checklist-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; max-height: 360px; overflow-y: auto; padding-right: 6px; }
+    .checklist-item {
+      display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px;
+      background: var(--paper); cursor: pointer; transition: background .15s; border: 1px solid transparent;
+    }
+    .checklist-item:hover { background: var(--paper-soft); }
+    .checklist-item.checked { background: #F0FDF4; border-color: #bbf7d0; }
+    .checklist-item.checked .item-name { text-decoration: line-through; color: #9ca3af; }
+    .checklist-item input { display: none; }
+    .custom-check {
+      width: 22px; height: 22px; border-radius: 6px; border: 2px solid #d1d5db;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: .15s;
+      background: #fff;
+    }
+    .checklist-item.checked .custom-check { background: var(--green); border-color: var(--green); }
+    .custom-check svg { opacity: 0; transition: .15s; }
+    .checklist-item.checked .custom-check svg { opacity: 1; }
+    .item-name { font-size: 14px; font-weight: 500; flex: 1; }
+    .item-qty { font-size: 12px; color: #9ca3af; font-weight: 600; }
+
+    .checklist-actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 20px; border-top: 1px dashed #e7e5dc; }
+    .checklist-actions .btn { font-size: 14px; }
+
+    /* ============ Отзывы ============ */
+    .rating-badges { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 34px; }
+    .rating-badge {
+      background: #fff; border-radius: 16px; padding: 18px 24px; border: 1px solid #ecebe4;
+      display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm);
+    }
+    .rating-badge .score { font-size: 32px; font-weight: 800; line-height: 1; color: var(--ink); }
+    .rating-badge .meta { min-width: 0; }
+    .rating-badge .meta small { display: block; color: #6b7280; font-size: 12px; font-weight: 500; word-break: break-word; overflow-wrap: anywhere; }
+    .rating-badge .meta strong { display: block; word-break: break-word; overflow-wrap: anywhere; }
+    .rating-badge .stars { color: #F59E0B; font-size: 14px; letter-spacing: 1px; }
+
+    .slider { position: relative; overflow: hidden; border-radius: 20px; }
+    .slider-track { display: flex; transition: transform .45s cubic-bezier(.4,0,.2,1); }
+    .review-slide { min-width: 100%; padding: 34px; background: #fff; border: 1px solid #ecebe4; border-radius: 20px; }
+    .review-slide .quote { font-size: 19px; line-height: 1.55; font-weight: 500; margin-bottom: 18px; }
+    .review-slide .author { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+    .author-name { font-weight: 700; font-size: 14px; }
+    .author-src { font-size: 12px; color: #9ca3af; }
+    .slider-controls { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 22px; }
+    .slider-btn {
+      width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1.5px solid #e7e5dc;
+      display: flex; align-items: center; justify-content: center; transition: .18s;
+    }
+    .slider-btn:hover { border-color: var(--ink); color: var(--ink); transform: scale(1.06); }
+    .slider-dots { display: flex; gap: 8px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; border: none; padding: 0; transition: .2s; }
+    .dot.active { background: var(--ink); width: 24px; border-radius: 4px; }
+
+    /* ============ Контакты ============ */
+    .contacts-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: start; }
+    .contact-card { background: #fff; border-radius: 20px; padding: 30px; border: 1px solid #ecebe4; box-shadow: var(--shadow-sm); }
+    .contact-row { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid #f0efe8; }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 42px; height: 42px; border-radius: 12px; background: #EEF2FF; color: var(--ink);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-label { font-size: 12px; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+    .contact-value { font-size: 15px; font-weight: 600; line-height: 1.4; }
+    .contact-value a:hover { color: var(--ink); }
+    .pay-icons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .pay-icon { height: 26px; padding: 4px 10px; border-radius: 6px; background: var(--paper-soft); font-size: 11px; font-weight: 700; color: #4b5563; display: flex; align-items: center; }
+    .map-wrap {
+      border-radius: 20px; overflow: hidden; border: 1px solid #ecebe4;
+      box-shadow: var(--shadow-sm); height: 100%; min-height: 420px;
+      background: var(--paper-soft); position: relative;
+    }
+    .map-wrap iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0; display: block;
+    }
+    .map-link {
+      position: absolute; bottom: 12px; right: 12px; z-index: 2;
+      background: #fff; padding: 10px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,.15);
+      color: var(--ink); transition: transform .15s;
+    }
+    .map-link:hover { transform: translateY(-2px); }
+
+    /* ============ Footer ============ */
+    .footer { background: var(--graphite); color: #d1d5db; padding: 40px 0 30px; margin-top: 20px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; }
+    .footer a { color: #fff; }
+    .footer a:hover { color: var(--highlight); }
+
+    /* ============ Модалка ============ */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, .55); z-index: 200;
+      display: none; align-items: center; justify-content: center; padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 32px; width: 100%; max-width: 460px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3); position: relative; animation: modalIn .25s ease;
+    }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(.97); } to { opacity: 1; transform: none; } }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--paper-soft); display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #6b7280; transition: .15s;
+    }
+    .modal-close:hover { background: #e7e5dc; }
+    .modal h3 { font-size: 22px; margin-bottom: 6px; letter-spacing: -.01em; }
+    .modal > p { font-size: 14px; color: #6b7280; margin-bottom: 22px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #e5e3da;
+      font-family: inherit; font-size: 14px; transition: border-color .15s, box-shadow .15s; resize: vertical;
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(30,58,138,.12); }
+    .form-group input.error { border-color: var(--red); }
+    .form-error { font-size: 12px; color: var(--red); margin-top: 4px; display: none; }
+    .form-error.show { display: block; }
+    .modal .btn { width: 100%; margin-top: 6px; }
+
+    /* ============ Адаптив ============ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { max-width: 420px; margin: 0 auto; order: -1; }
+      .checklist-wrap { grid-template-columns: 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .map-wrap { min-height: 320px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: var(--paper); flex-direction: column; padding: 16px;
+        border-bottom: 1px solid #ecebe4; box-shadow: var(--shadow-md);
+        transform: translateY(-120%);
+        transition: transform .3s ease;
+        z-index: 99;
+        visibility: hidden;
+      }
+      .nav.open { transform: translateY(0); visibility: visible; }
+      .nav a { padding: 12px 16px; border-radius: 10px; }
+      .burger { display: block; }
+      .header-actions .status-badge { display: none; }
+      .header-actions .btn-ink { display: none; }
+      .hero { padding: 92px 0 40px; }
+      section { padding: 50px 0; }
+      .hero-cta .btn { flex: 1; }
+      .rating-badge { flex: 1 1 100%; min-width: 0; width: 100%; }
+      .checklist-main { padding: 20px; }
+      .review-slide { padding: 24px; }
+      .review-slide .quote { font-size: 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-meta { flex-direction: column; gap: 8px; }
+      .tabs { gap: 6px; }
+      .tab { padding: 8px 14px; font-size: 13px; }
+    }
+
+    .burger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Канцтовары А4 — на главную">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="40" height="40" aria-hidden="true" style="flex-shrink:0;">
+          <defs>
+            <linearGradient id="logoBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1E3A8A"/>
+              <stop offset="100%" stop-color="#0F172A"/>
+            </linearGradient>
+          </defs>
+          <rect width="240" height="240" rx="28" fill="url(#logoBg)"/>
+          <path d="M 122 46 L 42 46 L 42 198 L 194 198 L 194 114" fill="none" stroke="#E31E24" stroke-width="18" stroke-linecap="square" stroke-linejoin="miter"/>
+          <path d="M 74 176 L 106 86 L 130 86 L 162 176 L 138 176 L 131 154 L 105 154 L 98 176 Z M 118 112 L 109 138 L 127 138 Z" fill="#E31E24"/>
+          <path d="M 164 26 L 136 66 L 136 78 L 166 78 L 166 94 L 182 94 L 182 78 L 192 78 L 192 64 L 182 64 L 182 26 Z M 166 46 L 166 64 L 152 64 Z" fill="#FFFFFF"/>
+        </svg>
+        <span>Канцтовары А4<small>Жлобин · 18-й микрорайон</small></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#catalog">Ассортимент</a>
+        <a href="#checklist">Собрать в школу</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="status-badge" id="statusBadge" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="statusText">Проверяем…</span>
+        </div>
+        <a class="btn btn-ink" href="viber://chat?number=%2B375293240205" target="_blank" rel="noopener">
+          Написать в Viber
+        </a>
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-eyebrow">📍 18-й мкр-н, Жлобин</span>
+          <h1>Всё для школы, творчества и офиса <span class="marker">в 2 минутах от школы</span></h1>
+          <p class="lead">От простых тетрадей до профессиональных красок «Невская палитра». Работаем каждый день с 8:00 до 20:00 без выходных.</p>
+          <div class="hero-cta">
+            <a href="#catalog" class="btn btn-primary">Посмотреть ассортимент</a>
+            <a href="#contacts" class="btn btn-ghost">Проложить маршрут</a>
+          </div>
+          <div class="hero-meta">
+            <span>⭐ Рейтинг 5.0 на Яндекс Картах</span>
+            <span>🕒 Без выходных</span>
+            <span>🛒 170+ оценок</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=800&q=70" alt="Канцелярские товары в магазине" loading="lazy" width="600" height="750" />
+          </div>
+          <div class="sticker sticker-rating">⭐ Рейтинг 5.0</div>
+          <div class="sticker sticker-hours">🕒 Без выходных</div>
+          <div class="sticker-hand">заходите, всё есть!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= КАТАЛОГ ================= -->
+    <section id="catalog">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Ассортимент</span>
+          <h2>Каталог товаров</h2>
+          <p>Выберите категорию — показаны только актуальные позиции. Наличие и цену уточняйте одним кликом.</p>
+        </div>
+
+        <div class="tabs" id="tabs" role="tablist" aria-label="Категории товаров">
+          <button class="tab active" data-cat="all" role="tab" aria-selected="true">Все товары</button>
+          <button class="tab" data-cat="school" role="tab" aria-selected="false">Школа</button>
+          <button class="tab" data-cat="art" role="tab" aria-selected="false">Творчество и арт</button>
+          <button class="tab" data-cat="office" role="tab" aria-selected="false">Офис и гаджеты</button>
+          <button class="tab" data-cat="gifts" role="tab" aria-selected="false">Подарки</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= ЧЕК-ЛИСТ ================= -->
+    <section id="checklist">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Киллер-фича</span>
+          <h2>Собери ребёнка в школу за 2 минуты</h2>
+          <p>Отметьте, что уже есть дома, а остальное отправьте нам в Viber — соберём пакет к вашему приходу.</p>
+        </div>
+
+        <div class="checklist-wrap">
+          <aside class="checklist-side">
+            <h3>Выберите класс</h3>
+            <p>Список сформируется автоматически. Отметки сохраняются.</p>
+            <div class="class-options" id="classOptions">
+              <button class="class-option active" data-class="primary">1–4 класс<small>Начальная школа</small></button>
+              <button class="class-option" data-class="middle">5–11 класс<small>Средняя и старшая школа</small></button>
+              <button class="class-option" data-class="art">Художественная школа<small>Творческие материалы</small></button>
+            </div>
+          </aside>
+
+          <div class="checklist-main">
+            <div class="checklist-top">
+              <h4 id="checklistTitle">Список для 1–4 класса</h4>
+              <span class="progress-text" id="progressText">0 из 0</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+            <div class="checklist-items" id="checklistItems"></div>
+
+            <div class="checklist-actions">
+              <a href="#" id="sendViber" class="btn btn-ink" target="_blank" rel="noopener">
+                ✉️ Отправить в Viber
+              </a>
+              <button class="btn btn-ghost" id="copyList">📋 Скопировать список</button>
+              <button class="btn btn-ghost" id="resetList">↺ Сбросить отметки</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ОТЗЫВЫ ================= -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Нам доверяют</span>
+          <h2>Отзывы покупателей</h2>
+          <p>Реальные оценки на Яндекс Картах и Google — и цитаты тех, кто заходит к нам каждую неделю.</p>
+        </div>
+
+        <div class="rating-badges">
+          <div class="rating-badge">
+            <div class="score">5.0</div>
+            <div class="meta">
+              <div class="stars">★★★★★</div>
+              <small>Яндекс Карты · 170+ оценок</small>
+            </div>
+          </div>
+          <div class="rating-badge">
+            <div class="score">4.7</div>
+            <div class="meta">
+              <div class="stars">★★★★★</div>
+              <small>Google · отзывы покупателей</small>
+            </div>
+          </div>
+          <a class="rating-badge" href="https://instagram.com/a4_zhlobin" target="_blank" rel="noopener" style="text-decoration:none;min-width:0;">
+            <div class="score" style="font-size:24px;">📷</div>
+            <div class="meta">
+              <small>Больше новинок в Instagram</small>
+              <strong style="color:var(--ink);">@a4_zhlobin</strong>
+            </div>
+          </a>
+        </div>
+
+        <div class="slider" id="slider">
+          <div class="slider-track" id="sliderTrack"></div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="prevSlide" aria-label="Предыдущий отзыв">←</button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-btn" id="nextSlide" aria-label="Следующий отзыв">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= КОНТАКТЫ ================= -->
+    <section id="contacts">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Контакты</span>
+          <h2>Как нас найти</h2>
+          <p>Мы в самом сердце 18-го микрорайона — рядом со школой.</p>
+        </div>
+
+        <div class="contacts-grid">
+          <div class="contact-card">
+            <div class="contact-row">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-label">Адрес</div>
+                <div class="contact-value">г. Жлобин, 18-й микрорайон, д. 24</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">🕒</div>
+              <div>
+                <div class="contact-label">График</div>
+                <div class="contact-value">Ежедневно, 08:00–20:00</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-label">Телефоны</div>
+                <div class="contact-value">
+                  <a href="tel:+375445643580">+375 (44) 564-35-80</a><br />
+                  <a href="tel:+375293240205">+375 (29) 324-02-05</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">💳</div>
+              <div>
+                <div class="contact-label">Оплата</div>
+                <div class="pay-icons">
+                  <span class="pay-icon">VISA</span>
+                  <span class="pay-icon">MasterCard</span>
+                  <span class="pay-icon">Белкарт</span>
+                  <span class="pay-icon">Apple Pay</span>
+                  <span class="pay-icon">Samsung Pay</span>
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-primary" style="width:100%;margin-top:8px;" href="viber://chat?number=%2B375293240205" target="_blank" rel="noopener">Написать в Viber</a>
+          </div>
+
+          <div class="map-wrap">
+            <iframe
+              src="https://yandex.by/map-widget/v1/?ll=30.0247%2C52.8926&z=16&pt=30.0247,52.8926,pm2rdm&text=%D0%96%D0%BB%D0%BE%D0%B1%D0%B8%D0%BD%2C%2018-%D0%B9%20%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%2024"
+              title="Карта: Жлобин, 18-й микрорайон, 24"
+              width="100%"
+              height="100%"
+              loading="eager"
+              allow="geolocation"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              style="border:0;display:block;"
+            ></iframe>
+            <a class="map-link" href="https://yandex.by/maps/26032/zhlobin/?ll=30.0247%2C52.8926&z=16&pt=30.0247,52.8926,pm2rdm" target="_blank" rel="noopener">
+              Открыть в Яндекс.Картах →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-inner" style="flex-direction:column;align-items:flex-start;gap:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;width:100%;">
+        <span>© 2025 «Канцтовары А4» · г. Жлобин</span>
+        <span>Работаем ежедневно 08:00–20:00 · <a href="tel:+375293240205">+375 (29) 324-02-05</a></span>
+      </div>
+      <p style="font-size:12px;opacity:.6;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:4px;width:100%;">
+        Это демонстрационная версия сайта. Все материалы предоставлены исключительно в ознакомительных целях. Готовы удалить контент или внести правки при первом требовании правообладателя.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ================= МОДАЛКА ================= -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Закрыть">✕</button>
+      <h3 id="modalTitle">Уточнить наличие</h3>
+      <p>Оставьте номер — перезвоним и подскажем цену и наличие.</p>
+      <form id="orderForm" novalidate>
+        <div class="form-group">
+          <label for="orderPhone">Телефон</label>
+          <input type="tel" id="orderPhone" name="phone" placeholder="+375 (29) 123-45-67" autocomplete="tel" required />
+          <span class="form-error" id="phoneError">Введите номер в формате +375 (XX) XXX-XX-XX</span>
+        </div>
+        <div class="form-group">
+          <label for="orderComment">Комментарий</label>
+          <textarea id="orderComment" name="comment" rows="2" placeholder="Например: нужна тетрадь 12 листов, 10 шт."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить запрос</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /* ================================================================
+       1. ДИНАМИЧЕСКИЙ СТАТУС «ОТКРЫТО / ЗАКРЫТО»
+       ================================================================ */
+    (function initStatus() {
+      const OPEN_HOUR = 8;
+      const CLOSE_HOUR = 20;
+      const badge = document.getElementById('statusBadge');
+      const text = document.getElementById('statusText');
+
+      function getBelarusTime() {
+        const now = new Date();
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        return new Date(utc + 3 * 3600000);
+      }
+
+      function update() {
+        const b = getBelarusTime();
+        const hour = b.getHours();
+        const isOpen = hour >= OPEN_HOUR && hour < CLOSE_HOUR;
+
+        if (isOpen) {
+          badge.classList.remove('is-closed');
+          badge.classList.add('is-open');
+          text.textContent = `Открыто до ${String(CLOSE_HOUR).padStart(2, '0')}:00`;
+        } else {
+          badge.classList.remove('is-open');
+          badge.classList.add('is-closed');
+          text.textContent = `Закрыто до ${String(OPEN_HOUR).padStart(2, '0')}:00`;
+        }
+      }
+
+      update();
+      setInterval(update, 60000);
+    })();
+
+    /* ================================================================
+       2. КАТАЛОГ ТОВАРОВ + ФИЛЬТРАЦИЯ ПО КАТЕГОРИЯМ
+       ================================================================ */
+    const PRODUCTS = [
+      { id: 1, cat: 'school', name: 'Тетради в клетку, 12 листов', brand: 'Добруш', price: 'от 0,19 BYN', img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=60' },
+      { id: 2, cat: 'school', name: 'Дневник школьника 1–4 класс', brand: 'Белбланкавыд', price: '4,90 BYN', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&q=60' },
+      { id: 3, cat: 'school', name: 'Атлас по географии, 10 класс', brand: 'Белкартография', price: '8,50 BYN', img: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&q=60' },
+      { id: 4, cat: 'school', name: 'Ручка шариковая синяя, 0.7 мм', brand: 'DELI', price: 'от 0,29 BYN', img: 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=400&q=60' },
+
+      { id: 5, cat: 'art', name: 'Краски акварельные «Невская палитра» «Цветик», 12 цветов', brand: 'Невская палитра', price: '8,90 BYN', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=60' },
+      { id: 6, cat: 'art', name: 'Пастель масляная, 24 цвета', brand: 'Гамма', price: '15,40 BYN', img: 'https://images.unsplash.com/photo-1452802447250-470a88ac82bc?w=400&q=60' },
+      { id: 7, cat: 'art', name: 'Кисти синтетика, набор 6 шт.', brand: 'Невская палитра', price: '9,20 BYN', img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=60' },
+      { id: 8, cat: 'art', name: 'Скетчбук А5, 60 листов', brand: 'DELI', price: '6,80 BYN', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&q=60' },
+
+      { id: 9, cat: 'office', name: 'Бумага А4, 500 листов, 80 г/м²', brand: 'SvetoCopy', price: '13,50 BYN', img: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&q=60' },
+      { id: 11, cat: 'office', name: 'Корректор-лента DELI, 5 мм × 6 м', brand: 'DELI', price: '3,20 BYN', img: 'https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=400&q=60' },
+      { id: 12, cat: 'office', name: 'Степлер + скобы №24/6', brand: 'DELI', price: '7,30 BYN', img: 'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=400&q=60' },
+
+      { id: 13, cat: 'gifts', name: 'Копилка-сейф с кодом', brand: '', price: '14,00 BYN', img: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&q=60' },
+      { id: 14, cat: 'gifts', name: 'Конверт подарочный крафт', brand: '', price: '1,50 BYN', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400&q=60' },
+      { id: 15, cat: 'gifts', name: 'Набор гелевых ручек, 6 шт.', brand: 'FINENOLO', price: '5,60 BYN', img: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=60' },
+      { id: 16, cat: 'gifts', name: 'Стикеры-закладки, 5 блоков', brand: 'DELI', price: '3,90 BYN', img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=60' }
+    ];
+
+    const grid = document.getElementById('productsGrid');
+
+    function renderProducts(cat = 'all') {
+      const list = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+      if (!list.length) {
+        grid.innerHTML = '<div class="empty-state">В этой категории пока пусто — загляните позже.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(p => `
+        <article class="product-card" data-id="${p.id}">
+          <div class="product-img">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" width="400" height="300" />
+          </div>
+          <div class="product-body">
+            <span class="product-badge">✓ В наличии</span>
+            ${p.brand ? `<span class="product-brand">${p.brand}</span>` : ''}
+            <h3>${p.name}</h3>
+            <span class="product-price">${p.price}</span>
+            <button class="btn btn-ghost" data-order="${p.name}">Уточнить наличие</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    const tabs = document.getElementById('tabs');
+    tabs.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab');
+      if (!btn) return;
+      tabs.querySelectorAll('.tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      renderProducts(btn.dataset.cat);
+    });
+
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-order]');
+      if (!btn) return;
+      openModal(btn.dataset.order);
+    });
+
+    renderProducts('all');
+
+    /* ================================================================
+       3. МОДАЛКА + ВАЛИДАЦИЯ ТЕЛЕФОНА
+       ================================================================ */
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modalClose');
+    const orderForm = document.getElementById('orderForm');
+    const phoneInput = document.getElementById('orderPhone');
+    const phoneError = document.getElementById('phoneError');
+    const modalTitle = document.getElementById('modalTitle');
+    const orderComment = document.getElementById('orderComment');
+    let lastFocused = null;
+
+    function openModal(productName) {
+      lastFocused = document.activeElement;
+      modalTitle.textContent = productName ? `Наличие: ${productName}` : 'Уточнить наличие';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      phoneInput.value = '';
+      orderComment.value = '';
+      phoneError.classList.remove('show');
+      phoneInput.classList.remove('error');
+      phoneInput.focus();
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    function normalizePhone(v) {
+      let d = v.replace(/\D/g, '');
+      if (d.startsWith('375')) d = d.slice(3);
+      if (d.startsWith('80')) d = d.slice(2);
+      d = d.slice(0, 9);
+      let out = '+375';
+      if (d.length > 0) out += ` (${d.slice(0, 2)}`;
+      if (d.length >= 2) out += ')';
+      if (d.length > 2) out += ` ${d.slice(2, 5)}`;
+      if (d.length > 5) out += `-${d.slice(5, 7)}`;
+      if (d.length > 7) out += `-${d.slice(7, 9)}`;
+      return { out, digits: d };
+    }
+    phoneInput.addEventListener('input', (e) => {
+      const { out } = normalizePhone(e.target.value);
+      e.target.value = out;
+    });
+
+    function isValidBYPhone(v) {
+      const { digits } = normalizePhone(v);
+      return /^(25|29|33|44)\d{7}$/.test(digits);
+    }
+
+    orderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!isValidBYPhone(phoneInput.value)) {
+        phoneInput.classList.add('error');
+        phoneError.classList.add('show');
+        phoneInput.focus();
+        return;
+      }
+      phoneInput.classList.remove('error');
+      phoneError.classList.remove('show');
+      const phone = phoneInput.value;
+      const comment = orderComment.value.trim();
+      const text = `Здравствуйте! Пишу с сайта.\nТелефон: ${phone}\n${comment ? 'Комментарий: ' + comment : ''}`;
+      navigator.clipboard?.writeText(text).catch(() => {});
+      window.open('viber://chat?number=%2B375293240205', '_blank');
+      closeModal();
+      setTimeout(() => alert('Текст запроса скопирован в буфер обмена. Вставьте его в чат Viber.'), 300);
+    });
+
+    /* ================================================================
+       4. ЧЕК-ЛИСТ С СОХРАНЕНИЕМ В localStorage
+       ================================================================ */
+    const CHECKLISTS = {
+      primary: {
+        title: 'Список для 1–4 класса',
+        items: [
+          { id: 'p1', name: 'Тетради в клетку, 12 листов', qty: '10 шт.' },
+          { id: 'p2', name: 'Тетради в линейку, 12 листов', qty: '10 шт.' },
+          { id: 'p3', name: 'Обложки для тетрадей', qty: '10 шт.' },
+          { id: 'p4', name: 'Дневник школьника', qty: '1 шт.' },
+          { id: 'p5', name: 'Ручки шариковые синие', qty: '5 шт.' },
+          { id: 'p6', name: 'Простые карандаши ТМ', qty: '3 шт.' },
+          { id: 'p7', name: 'Линейка 20 см', qty: '1 шт.' },
+          { id: 'p8', name: 'Цветная бумага и картон', qty: '1 набор' },
+          { id: 'p9', name: 'Клей-карандаш', qty: '1 шт.' },
+          { id: 'p10', name: 'Пенал', qty: '1 шт.' }
+        ]
+      },
+      middle: {
+        title: 'Список для 5–11 класса',
+        items: [
+          { id: 'm1', name: 'Тетради общие 48–96 листов', qty: '10–15 шт.' },
+          { id: 'm2', name: 'Тетради тонкие 18–24 листа', qty: '10 шт.' },
+          { id: 'm3', name: 'Атласы и контурные карты', qty: 'по предметам' },
+          { id: 'm4', name: 'Ручки синие и цветные', qty: 'набор' },
+          { id: 'm5', name: 'Корректор / замазка', qty: '1 шт.' },
+          { id: 'm6', name: 'Циркуль, транспортир', qty: '1 набор' },
+          { id: 'm7', name: 'Папка для тетрадей', qty: '1 шт.' },
+          { id: 'm8', name: 'Закладки и стикеры', qty: '1 набор' },
+          { id: 'm9', name: 'Флешка для презентаций', qty: '1 шт.' },
+          { id: 'm10', name: 'Блокнот для записей', qty: '1 шт.' }
+        ]
+      },
+      art: {
+        title: 'Список для художественной школы',
+        items: [
+          { id: 'a1', name: 'Краски акварельные «Невская палитра»', qty: '1 набор' },
+          { id: 'a2', name: 'Гуашь художественная', qty: '1 набор' },
+          { id: 'a3', name: 'Кисти синтетика и белка', qty: 'набор' },
+          { id: 'a4', name: 'Бумага для акварели А3', qty: '10 листов' },
+          { id: 'a5', name: 'Скетчбук А4', qty: '1 шт.' },
+          { id: 'a6', name: 'Пастель масляная', qty: '1 набор' },
+          { id: 'a7', name: 'Карандаши художественные', qty: 'набор' },
+          { id: 'a8', name: 'Ластик-клячка', qty: '1 шт.' },
+          { id: 'a9', name: 'Палитра пластиковая', qty: '1 шт.' },
+          { id: 'a10', name: 'Пенал для кистей', qty: '1 шт.' }
+        ]
+      }
+    };
+
+    const STORAGE_KEY = 'a4_checklist_v1';
+    let currentClass = 'primary';
+    let state = loadState();
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+      } catch { return {}; }
+    }
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+    }
+    function getCheckedSet(cls) {
+      const all = state[cls] || {};
+      return new Set(Object.keys(all).filter(k => all[k]));
+    }
+
+    const checklistItems = document.getElementById('checklistItems');
+    const checklistTitle = document.getElementById('checklistTitle');
+    const progressText = document.getElementById('progressText');
+    const progressFill = document.getElementById('progressFill');
+    const classOptions = document.getElementById('classOptions');
+
+    function renderChecklist() {
+      const data = CHECKLISTS[currentClass];
+      checklistTitle.textContent = data.title;
+      const checked = getCheckedSet(currentClass);
+
+      checklistItems.innerHTML = data.items.map(item => {
+        const isChecked = checked.has(item.id);
+        return `
+          <label class="checklist-item ${isChecked ? 'checked' : ''}" data-item="${item.id}">
+            <input type="checkbox" ${isChecked ? 'checked' : ''} />
+            <span class="custom-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="item-name">${item.name}</span>
+            <span class="item-qty">${item.qty}</span>
+          </label>
+        `;
+      }).join('');
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const data = CHECKLISTS[currentClass];
+      const checked = getCheckedSet(currentClass);
+      const total = data.items.length;
+      const done = data.items.filter(i => checked.has(i.id)).length;
+      progressText.textContent = `${done} из ${total}`;
+      progressFill.style.width = `${total ? (done / total) * 100 : 0}%`;
+    }
+
+    checklistItems.addEventListener('change', (e) => {
+      const label = e.target.closest('.checklist-item');
+      if (!label) return;
+      const id = label.dataset.item;
+      const checked = e.target.checked;
+      label.classList.toggle('checked', checked);
+      if (!state[currentClass]) state[currentClass] = {};
+      state[currentClass][id] = checked;
+      saveState();
+      updateProgress();
+    });
+
+    classOptions.addEventListener('click', (e) => {
+      const btn = e.target.closest('.class-option');
+      if (!btn) return;
+      classOptions.querySelectorAll('.class-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentClass = btn.dataset.class;
+      renderChecklist();
+    });
+
+    document.getElementById('sendViber').addEventListener('click', (e) => {
+      e.preventDefault();
+      const data = CHECKLISTS[currentClass];
+      const checked = getCheckedSet(currentClass);
+      const needed = data.items.filter(i => !checked.has(i.id));
+      if (!needed.length) {
+        alert('Всё отмечено! Список пуст — можно ничего не покупать 🙂');
+        return;
+      }
+      const lines = needed.map(i => `• ${i.name} — ${i.qty}`).join('\n');
+      const text = `Здравствуйте! Хочу собрать пакет к приходу.\n${data.title}:\n${lines}`;
+      navigator.clipboard?.writeText(text).catch(() => {});
+      window.open('viber://chat?number=%2B375293240205', '_blank');
+      setTimeout(() => alert('Список скопирован в буфер обмена. Вставьте его в чат Viber.'), 200);
+    });
+
+    document.getElementById('copyList').addEventListener('click', async () => {
+      const data = CHECKLISTS[currentClass];
+      const checked = getCheckedSet(currentClass);
+      const needed = data.items.filter(i => !checked.has(i.id));
+      const lines = needed.length
+        ? needed.map(i => `• ${i.name} — ${i.qty}`).join('\n')
+        : 'Всё отмечено — список пуст.';
+      const text = `${data.title}:\n${lines}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.getElementById('copyList');
+        const old = btn.textContent;
+        btn.textContent = '✓ Скопировано';
+        setTimeout(() => (btn.textContent = old), 1600);
+      } catch {
+        alert('Не удалось скопировать. Скопируйте вручную:\n\n' + text);
+      }
+    });
+
+    document.getElementById('resetList').addEventListener('click', () => {
+      if (!confirm('Сбросить все отметки для этого списка?')) return;
+      state[currentClass] = {};
+      saveState();
+      renderChecklist();
+    });
+
+    renderChecklist();
+
+    /* ================================================================
+       5. СЛАЙДЕР ОТЗЫВОВ
+       ================================================================ */
+    const REVIEWS = [
+      { quote: 'Огромный выбор канцтоваров! Купили всё к школе за один заход, продавцы подсказали, что нужно для 1 класса.', name: 'Марина К.', src: 'Яндекс Карты', initial: 'М' },
+      { quote: 'Брала краски «Невская палитра» для художественной школы — качество отличное, и цены ниже, чем в других магазинах города.', name: 'Ольга В.', src: 'Google', initial: 'О' },
+      { quote: 'Очень удобно, что рядом с домом. Забегаю за бумагой и ручками для офиса — всегда всё есть.', name: 'Дмитрий Р.', src: 'Яндекс Карты', initial: 'Д' },
+      { quote: 'Помогли подобрать подарок ребёнку — копилку-сейф. Дочь в восторге! Приятно, когда продавцы так внимательны.', name: 'Елена С.', src: 'Google', initial: 'Е' }
+    ];
+
+    const sliderTrack = document.getElementById('sliderTrack');
+    const sliderDots = document.getElementById('sliderDots');
+    let slideIndex = 0;
+
+    function renderSlider() {
+      sliderTrack.innerHTML = REVIEWS.map(r => `
+        <div class="review-slide">
+          <p class="quote">«${r.quote}»</p>
+          <div class="author">
+            <div class="avatar">${r.initial}</div>
+            <div>
+              <div class="author-name">${r.name}</div>
+              <div class="author-src">${r.src}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      sliderDots.innerHTML = REVIEWS.map((_, i) =>
+        `<button class="dot ${i === 0 ? 'active' : ''}" data-dot="${i}" aria-label="Отзыв ${i + 1}"></button>`
+      ).join('');
+      goTo(0);
+    }
+    function goTo(i) {
+      slideIndex = (i + REVIEWS.length) % REVIEWS.length;
+      sliderTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+      sliderDots.querySelectorAll('.dot').forEach((d, idx) =>
+        d.classList.toggle('active', idx === slideIndex)
+      );
+    }
+    document.getElementById('prevSlide').addEventListener('click', () => goTo(slideIndex - 1));
+    document.getElementById('nextSlide').addEventListener('click', () => goTo(slideIndex + 1));
+    sliderDots.addEventListener('click', (e) => {
+      const d = e.target.closest('[data-dot]');
+      if (d) goTo(+d.dataset.dot);
+    });
+    let autoSlide = setInterval(() => goTo(slideIndex + 1), 6000);
+    const sliderEl = document.getElementById('slider');
+    sliderEl.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    sliderEl.addEventListener('mouseleave', () => { autoSlide = setInterval(() => goTo(slideIndex + 1), 6000); });
+
+    renderSlider();
+
+    /* ================================================================
+       6. БУРГЕР-МЕНЮ + ПЛАВНЫЙ СКРОЛЛ
+       ================================================================ */
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+
+    function closeMenu() {
+      nav.classList.remove('open');
+      burger.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      burger.classList.toggle('active', open);
+      burger.setAttribute('aria-expanded', String(open));
+    });
+
+    nav.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+
+      e.preventDefault();
+      closeMenu();
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      const headerHeight = 72;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+
+    // Закрыть меню при клике вне его (на мобильных)
+    document.addEventListener('click', (e) => {
+      if (!nav.classList.contains('open')) return;
+      if (nav.contains(e.target) || burger.contains(e.target)) return;
+      closeMenu();
+    });
+  </script>
+</body>
+</html>
